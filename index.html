@@ -204,6 +204,27 @@ section.block + section.block{border-top:1px solid var(--line)}
 .tips div{background:var(--surface-2);border-radius:14px;padding:14px 16px;font-size:15px}
 .tips b{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
 
+/* guest reviews */
+.rev-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px}
+.rev-head .sec-head{margin-bottom:0}
+.rev-ctrl{display:flex;gap:8px}
+.rev-ctrl button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);display:grid;place-items:center;cursor:pointer}
+.rev-ctrl button:hover{border-color:var(--muted)}
+.rev-ctrl button[disabled]{opacity:.35;cursor:default}
+.rev-ctrl svg{width:18px;height:18px}
+.reviews{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:thin;scroll-behavior:smooth}
+.review{flex:0 0 min(86%,360px);scroll-snap-align:start;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.review .stars{color:#D49A2A;letter-spacing:2px;font-size:15px}
+.review blockquote{margin:0;font-family:var(--f-display);font-size:19px;line-height:1.45;flex:1}
+.review blockquote .tr{display:block;font-family:var(--f-body);font-size:12px;color:var(--muted);margin-top:8px;font-style:italic}
+.review footer{display:flex;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:12px}
+.review .av{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:var(--accent-fg);background:var(--accent)}
+.review .who{min-width:0;display:flex;flex-direction:column;line-height:1.3}
+.review .who b{font-size:15px}
+.review .who span{font-size:13px;color:var(--muted)}
+.rev-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;margin-top:14px;font-size:14px;color:var(--muted)}
+.rev-foot a{font-weight:600;color:var(--accent)}
+
 /* closing */
 .closing{background:var(--hero-bg);color:var(--hero-fg)}
 .closing .wrap{padding-block:64px;display:flex;flex-direction:column;gap:18px}
@@ -403,6 +424,25 @@ section.block + section.block{border-top:1px solid var(--line)}
       </div>
     </div>
   </section>
+  <section class="block" id="comentarios">
+    <div class="wrap">
+      <div class="rev-head">
+        <div class="sec-head">
+          <p class="eyebrow"><span class="es">Comentarios en Airbnb</span><span class="en">Airbnb reviews</span></p>
+          <h2><span class="es">Lo que dicen nuestros huéspedes</span><span class="en">What our guests say</span></h2>
+        </div>
+        <div class="rev-ctrl">
+          <button type="button" id="revPrev" aria-label="Comentario anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button type="button" id="revNext" aria-label="Comentario siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="reviews" id="reviews" tabindex="0" aria-label="Comentarios de huéspedes"></div>
+      <div class="rev-foot">
+        <span><span class="es">10 de 24 reseñas, copiadas tal cual desde Airbnb. Todas con 5 estrellas.</span><span class="en">10 of 24 reviews, copied as written on Airbnb. All five stars.</span></span>
+        <a href="https://www.airbnb.cl/rooms/1627878755007060518" target="_blank" rel="noopener"><span class="es">Ver las 24 reseñas en Airbnb ↗</span><span class="en">See all 24 reviews on Airbnb ↗</span></a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <section class="closing">
@@ -534,6 +574,58 @@ section.block + section.block{border-top:1px solid var(--line)}
   window.addEventListener('resize',update);
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)track.style.scrollBehavior='auto';
   update();
+
+  // guest reviews: text exactly as published on Airbnb; English versions are translations
+  var ONE=['Estancia de una noche','One-night stay'], MANY=['Estancia de varias noches','Multi-night stay'], KIDS=['Estancia con niños','Stay with kids'];
+  var R=[
+    ['Gonzalo',['Santiago, Chile','Santiago, Chile'],['octubre de 2026','October 2026'],ONE,
+     'Muy buen lugar para hospedarse. Leonardo un increíble anfitrión, sus instrucciones fueron muy claras y fue muy comprensible con nuestra estadía.\nEl departamento estaba muy limpio, ordenado, tenía de todo lo necesario, incluso unos regalos que nos dejó el host.\nVolvería sin pensarlo, 100% recomendado',
+     'A great place to stay. Leonardo was an amazing host: his instructions were very clear and he was very understanding about our stay. The apartment was very clean and tidy and had everything we needed, even some gifts the host left for us. I’d come back without a second thought, 100% recommended.'],
+    ['Luis Eduardo',['Chile','Chile'],['abril de 2026','April 2026'],ONE,
+     'Hace mucho tiempo no me encontraba con un hospedaje tan bien organizado, fue una estadía express pero muy agradable, sin reparos. Totalmente recomendado si visitas Rancagua, su ubicación además cuenta con una conectividad inmejorable.',
+     'It’s been a long time since I found a place this well organized. It was a quick stay but very pleasant, with nothing to fault. Totally recommended if you visit Rancagua; the location also has unbeatable connections.'],
+    ['Alejandro',['Chile','Chile'],['mayo de 2026','May 2026'],ONE,
+     'Excelente el departamento, tal como aparece en las fotos, todo impecable. Leonardo, muy atento para responder todas las preguntas. Volvería a ir.',
+     'Excellent apartment, exactly as in the photos, everything spotless. Leonardo was very attentive in answering all our questions. I would go back.'],
+    ['Carolina',['Concepción, Chile','Concepción, Chile'],['septiembre de 2026','September 2026'],ONE,
+     'Muy hermoso y cómodo el departamento…muy limpio volvería nuevamente y muy bien ubicado',
+     'A very beautiful and comfortable apartment… very clean, I would come back again, and very well located.'],
+    ['Bastián',['Ciudad de Jersey, Nueva Jersey','Jersey City, New Jersey'],['mayo de 2026','May 2026'],KIDS,
+     'Excelente depto, muy centrico, todo al paso y en un barrio tranquilo! Muy lindo y limpio todo',
+     'Excellent apartment, very central, everything close by and in a quiet neighborhood! Everything very nice and clean.'],
+    ['Diego',['4 años en Airbnb','4 years on Airbnb'],['octubre de 2026','October 2026'],ONE,
+     'Acogedor departamento, horario flexible y estacionamiento',
+     'Cozy apartment, flexible hours and parking.'],
+    ['Alberto',['3 años en Airbnb','3 years on Airbnb'],['abril de 2026','April 2026'],ONE,
+     'Lugar impecable, todo nuevo, limpio, y de fácil acceso.. muy recomendable.',
+     'Spotless place, everything new, clean and easy to get to… highly recommended.'],
+    ['Victor Manuel',['3 meses en Airbnb','3 months on Airbnb'],['julio de 2026','July 2026'],MANY,
+     'Estuve una semana, y fue muy grato todo, si tuviera que volver arrendaría nuevamente',
+     'I stayed for a week and everything was very pleasant; if I came back I would rent it again.'],
+    ['Cristopher',['Santiago, Chile','Santiago, Chile'],['mayo de 2026','May 2026'],ONE,
+     'Buen alojamiento, todo ordenado y limpio. En cuanto a la ubicación, muy centrico, asi que excelente',
+     'Good place to stay, everything tidy and clean. As for the location, very central, so excellent.'],
+    ['Sebastian',['9 años en Airbnb','9 years on Airbnb'],['septiembre de 2026','September 2026'],MANY,
+     'Super buen lugar! Cómodo y limpio',
+     'Super nice place! Comfortable and clean.']
+  ];
+  var rv=document.getElementById('reviews'), rh='';
+  R.forEach(function(r){
+    var es=esc(r[4]).replace(/\n/g,'<br>'), en=esc(r[5]);
+    rh+='<article class="review"><div class="stars" aria-label="5 estrellas">★★★★★</div>'+
+      '<blockquote><span class="es">“'+es+'”</span><span class="en">“'+en+'”<span class="tr">Translated from Spanish</span></span></blockquote>'+
+      '<footer><span class="av" aria-hidden="true">'+r[0].charAt(0)+'</span><div class="who"><b>'+esc(r[0])+'</b>'+
+      '<span><span class="es">'+esc(r[1][0])+'</span><span class="en">'+esc(r[1][1])+'</span></span>'+
+      '<span><span class="es">'+r[2][0]+' · '+r[3][0]+'</span><span class="en">'+r[2][1]+' · '+r[3][1]+'</span></span></div></footer></article>';
+  });
+  rv.innerHTML=rh;
+  var rp=document.getElementById('revPrev'), rn=document.getElementById('revNext');
+  function step(){var c=rv.querySelector('.review');return c?c.getBoundingClientRect().width+14:300}
+  function rupd(){rp.disabled=rv.scrollLeft<=4; rn.disabled=rv.scrollLeft+rv.clientWidth>=rv.scrollWidth-4}
+  rp.addEventListener('click',function(){rv.scrollBy({left:-step()})});
+  rn.addEventListener('click',function(){rv.scrollBy({left:step()})});
+  var rt; rv.addEventListener('scroll',function(){clearTimeout(rt);rt=setTimeout(rupd,60)},{passive:true});
+  window.addEventListener('resize',rupd); rupd();
 })();
 </script>
 </body>
