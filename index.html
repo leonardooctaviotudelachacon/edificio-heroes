@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Edificio Héroes Rancagua</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Departamento de 2 dormitorios con estacionamiento en pleno centro de Rancagua, más una guía de 24 lugares cercanos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=DM+Sans:ital,wght@0,400..700;1,400..700&display=swap">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Edificio Héroes · Departamento en el centro de Rancagua">
+<meta property="og:description" content="2 dormitorios, estacionamiento privado, 4,92 en Airbnb. Guía de 24 lugares a pasos del departamento.">
+<meta property="og:image" content="https://leonardooctaviotudelachacon.github.io/edificio-heroes/images/og-image.jpg">
+<meta property="og:url" content="https://leonardooctaviotudelachacon.github.io/edificio-heroes/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E2A2B'/%3E%3Cpath d='M9 16l7-6 7 6M11 15v8h10v-8' fill='none' stroke='%23E08A6C' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+html{color-scheme:light;padding-top:env(safe-area-inset-top,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+<style>
+/* Layout: dark photo hero, then one reading column of paper sections; the neighborhood map is the centerpiece, with a filterable list of 24 places under it. */
+:root{
+  --bg:#F5EFE4; --surface:#FBF7EF; --surface-2:#EBE2D2; --fg:#1E2A2B; --muted:#55605E; --line:#DCCFB9;
+  --accent:#B4472A; --accent-fg:#FBF5EC;
+  --hero-bg:#1E2A2B; --hero-fg:#F5EFE4; --hero-muted:#B9C4C0; --hero-accent:#E08A6C; --hero-line:#3E5051;
+  --map-bg:#E9E0CE; --road:#FFFDF8; --road-edge:#C7B590; --road2:#FBF7EF; --road2-edge:#D2C3A6; --park:#A9C08F; --park-edge:#8FA874; --street:#4A5452; --ring:#B4472A;
+  --p1:#B4472A; --p2:#7A3E6A; --p3:#7B4F24; --p4:#1F6F68; --p5:#9A6B0C; --p6:#2F5D8C; --p7:#5E6B2E; --pin-fg:#FBF5EC; --pin-ring:#FBF7EF;
+  --c1:#B4472A; --c2:#7A3E6A; --c3:#7B4F24; --c4:#1F6F68; --c5:#8A5F0A; --c6:#2F5D8C; --c7:#55612A;
+  --t1:#F1DCD2; --t2:#EAD9E3; --t3:#EADFD2; --t4:#D3E5E1; --t5:#EFE2C6; --t6:#D6E1EC; --t7:#E0E4CF;
+  --f-display:'Fraunces', Georgia, 'Times New Roman', serif;
+  --f-body:'DM Sans', 'Segoe UI', Roboto, Arial, sans-serif;
+  --gutter-l:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#121A1B; --surface:#1A2425; --surface-2:#223031; --fg:#ECE5D8; --muted:#A9B5B1; --line:#2F3E3F;
+  --accent:#E08A6C; --accent-fg:#1A2425;
+  --hero-bg:#0D1415; --hero-line:#2C3A3B;
+  --map-bg:#1C2728; --road:#3A4A4B; --road-edge:#2A3738; --road2:#304041; --road2-edge:#253233; --park:#3F5A3C; --park-edge:#55764F; --street:#D3DBD7; --ring:#E08A6C; --pin-ring:#1C2728;
+  --c1:#E59A7F; --c2:#D49BC4; --c3:#D3AE86; --c4:#79C7BD; --c5:#DDB867; --c6:#9ABDE3; --c7:#B5C285;
+  --t1:#3A2621; --t2:#33242F; --t3:#332A21; --t4:#1D3634; --t5:#352C17; --t6:#1F2C3B; --t7:#2A2F1C;
+  color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#121A1B; --surface:#1A2425; --surface-2:#223031; --fg:#ECE5D8; --muted:#A9B5B1; --line:#2F3E3F;
+  --accent:#E08A6C; --accent-fg:#1A2425;
+  --hero-bg:#0D1415; --hero-line:#2C3A3B;
+  --map-bg:#1C2728; --road:#3A4A4B; --road-edge:#2A3738; --road2:#304041; --road2-edge:#253233; --park:#3F5A3C; --park-edge:#55764F; --street:#D3DBD7; --ring:#E08A6C; --pin-ring:#1C2728;
+  --c1:#E59A7F; --c2:#D49BC4; --c3:#D3AE86; --c4:#79C7BD; --c5:#DDB867; --c6:#9ABDE3; --c7:#B5C285;
+  --t1:#3A2621; --t2:#33242F; --t3:#332A21; --t4:#1D3634; --t5:#352C17; --t6:#1F2C3B; --t7:#2A2F1C;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+html:not([lang="en"]) .en{display:none}
+html[lang="en"] .es{display:none}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;letter-spacing:-0.01em}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* top bar */
+.top{background:var(--hero-bg);color:var(--hero-fg)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px}
+.brand{font-family:var(--f-display);font-size:19px}
+.brand small{font-family:var(--f-body);font-size:13px;color:var(--hero-muted);margin-left:6px}
+.lang{display:inline-flex;border:1.5px solid var(--hero-line);border-radius:999px;padding:3px}
+.lang button{font:600 13px var(--f-body);color:var(--hero-muted);background:none;border:0;border-radius:999px;padding:6px 12px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--hero-fg);color:var(--hero-bg)}
+
+/* hero */
+.hero{background:var(--hero-bg);color:var(--hero-fg)}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:0}
+.hero-photo{position:relative;height:340px;overflow:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
+.hero-text{padding-block:32px 40px;display:flex;flex-direction:column;gap:18px;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.hero-text .eyebrow{color:var(--hero-accent)}
+.hero h1{font-size:clamp(40px,9vw,76px);line-height:1.02;letter-spacing:-0.02em}
+.hero h1 i{color:var(--hero-accent)}
+.hero .lede{color:var(--hero-muted);font-size:18px;max-width:34em}
+.badges{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:15px;color:#D7DED9}
+.badges b{color:var(--hero-fg)}
+.badges .star{color:#E3A857}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:700 16px var(--f-body);text-decoration:none;border-radius:999px;padding:14px 22px;border:1.5px solid transparent;cursor:pointer}
+.btn-primary{background:#C2502E;color:#FBF5EC}
+.btn-primary:hover{background:#A9441F}
+.btn-ghost{border-color:var(--hero-line);color:var(--hero-fg)}
+.btn-ghost:hover{border-color:var(--hero-muted)}
+@media (min-width:900px){
+  .hero-grid{grid-template-columns:1.05fr .95fr;min-height:620px}
+  .hero-photo{height:auto;order:2}
+  .hero-text{justify-content:center;padding-block:72px;padding-left:max(48px, env(safe-area-inset-left,0px));padding-right:48px}
+}
+
+/* sections */
+section.block{padding-block:56px}
+section.block + section.block{border-top:1px solid var(--line)}
+.sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;max-width:40em}
+.sec-head h2{font-size:clamp(32px,6vw,48px);line-height:1.08}
+.sec-head p{color:var(--muted)}
+
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:720px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.stat{background:var(--surface-2);border-radius:18px;padding:18px 20px;display:flex;flex-direction:column;gap:2px}
+.stat .num{font-family:var(--f-display);font-size:56px;line-height:1;color:var(--accent)}
+.stat .lbl{font-weight:600}
+.stat .sub{font-size:14px;color:var(--muted)}
+.stat.dark{background:var(--hero-bg);color:var(--hero-fg)}
+.stat.dark .num{color:var(--hero-accent)} .stat.dark .sub{color:var(--hero-muted)}
+
+.amen{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px}
+@media (min-width:640px){.amen{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:960px){.amen{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.amen li{list-style:none;display:flex;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0}
+.amen svg{flex:none;width:28px;height:28px;color:var(--accent)}
+.amen ul{padding:0;margin:0}
+
+/* reviews + rules */
+.two{display:grid;grid-template-columns:1fr;gap:28px}
+@media (min-width:900px){.two{grid-template-columns:1fr 1fr;gap:48px}}
+.score{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.score .big{font-family:var(--f-display);font-weight:300;font-size:112px;line-height:.9;letter-spacing:-0.04em}
+.score .meta{color:var(--muted);padding-bottom:10px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{font-size:14px;font-weight:600;border-radius:999px;padding:6px 14px;border:1.5px solid var(--line)}
+.pill.on{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.scores{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:18px}
+.scores div{background:var(--surface-2);border-radius:12px;padding:10px 12px;min-width:0}
+.scores span{display:block;font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.scores b{font-family:var(--f-display);font-weight:400;font-size:26px;font-variant-numeric:tabular-nums}
+.times{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.time{border-radius:16px;padding:16px 18px;background:var(--surface-2)}
+.time.dark{background:var(--hero-bg);color:var(--hero-fg)}
+.time .k{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--accent)}
+.time.dark .k{color:var(--hero-accent)}
+.time .v{font-family:var(--f-display);font-size:44px;line-height:1.1;font-variant-numeric:tabular-nums}
+.time .s{font-size:14px;color:var(--muted)} .time.dark .s{color:var(--hero-muted)}
+.rules{list-style:none;padding:0;margin:16px 0 0}
+.rules li{display:flex;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.rules li:last-child{border-bottom:1px solid var(--line)}
+.rules svg{flex:none;width:22px;height:22px;color:var(--accent)}
+
+/* map */
+.map-shell{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.map-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.map-scroll svg{display:block;width:100%;min-width:760px;height:auto}
+.map-note{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;padding:10px 16px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+.swipe{display:inline}
+@media (min-width:800px){.swipe{display:none}}
+.street{font:italic 600 19px var(--f-body);fill:var(--street);stroke:var(--road);stroke-width:6px;paint-order:stroke;stroke-linejoin:round}
+.ringlbl{font:italic 700 19px var(--f-body);fill:var(--ring)}
+.pin{cursor:pointer;transition:opacity .2s}
+.pin circle{stroke:var(--pin-ring);stroke-width:3}
+.pin text{font:700 18px var(--f-body);fill:var(--pin-fg);text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.pin.dim{opacity:.18}
+.pin:focus-visible circle{stroke:var(--fg);stroke-width:4}
+
+.chips{display:flex;gap:8px;overflow-x:auto;padding:18px 0 6px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;display:inline-flex;align-items:center;gap:8px;font:600 14px var(--f-body);color:var(--fg);background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer}
+.chip .dot{width:10px;height:10px;border-radius:50%}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+
+.cats{display:flex;flex-direction:column;gap:30px;margin-top:22px}
+.cat h3{display:flex;align-items:center;gap:12px;font-size:28px;margin-bottom:10px}
+.cat h3 .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none}
+.cat h3 .ic svg{width:22px;height:22px}
+.places{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:760px){.places{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.place{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;min-width:0;scroll-margin-top:20px;transition:box-shadow .25s}
+.place.flash{box-shadow:0 0 0 3px var(--accent)}
+.place .n{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:var(--pin-fg);font-weight:700;font-size:15px}
+.place .body{min-width:0;display:flex;flex-direction:column;gap:3px}
+.place h4{margin:0;font-family:var(--f-display);font-weight:500;font-size:21px;line-height:1.2}
+.place .d{color:var(--muted);font-size:15px}
+.place .m{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.place .m b{color:var(--fg)}
+.place a.gm{font-size:14px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-top:4px}
+.place a.gm:hover{text-decoration:underline}
+
+.tips{display:grid;grid-template-columns:1fr;gap:10px;margin-top:30px}
+@media (min-width:760px){.tips{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.tips div{background:var(--surface-2);border-radius:14px;padding:14px 16px;font-size:15px}
+.tips b{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+
+/* closing */
+.closing{background:var(--hero-bg);color:var(--hero-fg)}
+.closing .wrap{padding-block:64px;display:flex;flex-direction:column;gap:18px}
+.closing h2{font-size:clamp(36px,7vw,60px);line-height:1.05}
+.closing h2 i{color:var(--hero-accent)}
+.closing p{color:var(--hero-muted);max-width:36em}
+.host{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:15px;color:#D7DED9}
+.foot{font-size:13px;color:var(--muted);padding-block:22px}
+
+/* sticky booking bar */
+.bookbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--hero-bg);color:var(--hero-fg);border-top:1px solid var(--hero-line);padding:10px var(--gutter-r) calc(10px + env(safe-area-inset-bottom,0px)) var(--gutter-l)}
+.bookbar .in{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.bookbar .t{font-size:14px;line-height:1.3;min-width:0}
+.bookbar .t b{font-family:var(--f-display);font-weight:500;font-size:17px;display:block}
+.bookbar .btn{padding:12px 18px;flex:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">Edificio Héroes<small>Rancagua</small></div>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" id="lang-es" aria-pressed="true">ES</button>
+      <button type="button" id="lang-en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-photo"><img src="images/living.jpg" alt="Living-comedor del departamento con vista a la cordillera" width="825" height="1100"></div>
+    <div class="hero-text">
+      <p class="eyebrow">O’Carrol 144 · Rancagua centro</p>
+      <h1><span class="es">Tu base en el <i>corazón</i> de Rancagua</span><span class="en">Your home base in the <i>heart</i> of Rancagua</span></h1>
+      <p class="lede"><span class="es">Departamento completo de 2 dormitorios con estacionamiento privado, a pasos de la Plaza de los Héroes.</span><span class="en">An entire 2-bedroom apartment with free private parking, steps from the main square.</span></p>
+      <div class="badges">
+        <span><span class="star" aria-hidden="true">★</span> <b>4,92</b> · <span class="es">24 reseñas</span><span class="en">24 reviews</span></span>
+        <span class="es">Favorito entre huéspedes</span><span class="en">Guest Favorite</span>
+        <span>Superhost</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://www.airbnb.cl/rooms/1627878755007060518" target="_blank" rel="noopener"><span class="es">Reservar en Airbnb</span><span class="en">Book on Airbnb</span> →</a>
+        <a class="btn btn-ghost" href="#guia"><span class="es">Ver guía del barrio</span><span class="en">Neighborhood guide</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="block" id="depto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span class="es">El departamento</span><span class="en">The apartment</span></p>
+        <h2><span class="es">Amplio, céntrico y listo para llegar</span><span class="en">Spacious, central and ready for you</span></h2>
+        <p><span class="es">Alojamiento entero en Rancagua centro. Restaurantes, bancos, supermercados y transporte público a minutos caminando, en una zona segura.</span><span class="en">The whole place, downtown. Restaurants, banks, supermarkets and public transport are a few minutes’ walk away, in a safe area.</span></p>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="num">2</span><span class="lbl"><span class="es">Dormitorios</span><span class="en">Bedrooms</span></span></div>
+        <div class="stat"><span class="num">3</span><span class="lbl"><span class="es">Camas</span><span class="en">Beds</span></span><span class="sub"><span class="es">Queen y camarote</span><span class="en">Queen and bunk bed</span></span></div>
+        <div class="stat"><span class="num">2</span><span class="lbl"><span class="es">Baños completos</span><span class="en">Full bathrooms</span></span></div>
+        <div class="stat dark"><span class="num">4</span><span class="lbl"><span class="es">Huéspedes máx.</span><span class="en">Guests max.</span></span><span class="sub"><span class="es">2 por dormitorio</span><span class="en">2 per bedroom</span></span></div>
+      </div>
+      <ul class="amen">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M9.5 16V8h3.2a2.4 2.4 0 0 1 0 4.8H9.5"/></svg><span><b class="es">Estacionamiento privado</b><b class="en">Private parking</b> · <span class="es">sin costo</span><span class="en">free</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.5a9.5 9.5 0 0 1 13 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1.2" fill="currentColor"/></svg><span><b>WiFi</b> · <span class="es">para trabajar o ver series</span><span class="en">for work or streaming</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 11h18M7 4h2M11 4h2"/><circle cx="8" cy="15.5" r="1.4"/></svg><span><b class="es">Cocina equipada</b><b class="en">Equipped kitchen</b> · <span class="es">refrigerador, horno, microondas</span><span class="en">fridge, oven, microwave</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span><b class="es">Living-comedor</b><b class="en">Living room</b> · <span class="es">con TV cable</span><span class="en">with cable TV</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg><span><b class="es">Espacio de trabajo</b><b class="en">Workspace</b> · <span class="es">privado</span><span class="en">private</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Check-in</b> · <span class="es">flexible</span><span class="en">flexible</span></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="resenas">
+    <div class="wrap two">
+      <div>
+        <p class="eyebrow"><span class="es">Lo que dicen los huéspedes</span><span class="en">What guests say</span></p>
+        <div class="score"><span class="big">4,92</span><span class="meta"><span class="es">de 5 · 24 reseñas<br>91 % con 5 estrellas</span><span class="en">out of 5 · 24 reviews<br>91% five-star</span></span></div>
+        <div class="pills"><span class="pill on"><span class="es">Favorito entre huéspedes</span><span class="en">Guest Favorite</span></span><span class="pill">Superhost</span></div>
+        <div class="scores">
+          <div><span class="es">Limpieza</span><span class="en">Cleanliness</span><b>5,0</b></div>
+          <div><span class="es">Ubicación</span><span class="en">Location</span><b>5,0</b></div>
+          <div><span class="es">Llegada</span><span class="en">Check-in</span><b>5,0</b></div>
+          <div><span class="es">Comunicación</span><span class="en">Communication</span><b>5,0</b></div>
+          <div><span class="es">Exactitud</span><span class="en">Accuracy</span><b>5,0</b></div>
+          <div><span class="es">Calidad-precio</span><span class="en">Value</span><b>4,9</b></div>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:14px"><span class="es">Antes de llegar</span><span class="en">Before you arrive</span></p>
+        <div class="times">
+          <div class="time"><div class="k">CHECK-IN</div><div class="v">15:00</div><div class="s"><span class="es">desde esta hora</span><span class="en">from 3 PM</span></div></div>
+          <div class="time dark"><div class="k">CHECK-OUT</div><div class="v">11:00</div><div class="s"><span class="es">hasta esta hora</span><span class="en">by 11 AM</span></div></div>
+        </div>
+        <ul class="rules">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="es">No fumar dentro; solo en el balcón</span><span class="en">No smoking inside; balcony only</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="es">No se admiten mascotas</span><span class="en">No pets</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="es">Máximo 4 huéspedes, 2 por dormitorio</span><span class="en">Max. 4 guests, 2 per bedroom</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="es">Cierra las ventanas al salir</span><span class="en">Close the windows when you leave</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="guia">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span class="es">Guía del barrio</span><span class="en">Neighborhood guide</span></p>
+        <h2><span class="es">24 lugares a menos de 12 minutos a pie</span><span class="en">24 places within a 12-minute walk</span></h2>
+        <p><span class="es">Ubicaciones según Google Maps. Toca un número en el mapa para ver la ficha, o filtra por categoría.</span><span class="en">Locations from Google Maps. Tap a number on the map to see its card, or filter by category.</span></p>
+      </div>
+
+      <div class="map-shell">
+        <div class="map-scroll">
+          <svg id="map" viewBox="0 0 1200 640" role="img" aria-label="Mapa del centro de Rancagua con el Edificio Héroes y 24 lugares numerados">
+            <defs><clipPath id="mc"><rect width="1200" height="640"/></clipPath></defs>
+            <g clip-path="url(#mc)">
+              <rect width="1200" height="640" fill="var(--map-bg)"/>
+              <circle cx="651" cy="449" r="572" fill="none" stroke="var(--ring)" stroke-opacity=".4" stroke-width="2.5" stroke-dasharray="10 10"/>
+              <circle cx="651" cy="449" r="286" fill="var(--ring)" fill-opacity=".06" stroke="var(--ring)" stroke-opacity=".65" stroke-width="2.5" stroke-dasharray="10 10"/>
+              <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <g stroke="var(--road2-edge)" stroke-width="15">
+                  <polyline points="642,129 639,155 617,316 599,446 584,510 566,672"/><polyline points="751,129 748,155 733,284 718,413 703,510 684,672"/><polyline points="522,148 520,167 470,343 453,542 439,672"/><polyline points="931,368 924,446 912,542 900,672"/><polyline points="1028,-13 1019,155 1007,316 997,381"/><polyline points="1037,404 1031,446 1022,672"/><polyline points="1152,-13 1146,155 1140,413 1131,542 1122,672"/><polyline points="291,-72 285,130 280,205 271,257"/>
+                </g>
+                <g stroke="var(--road2)" stroke-width="9">
+                  <polyline points="642,129 639,155 617,316 599,446 584,510 566,672"/><polyline points="751,129 748,155 733,284 718,413 703,510 684,672"/><polyline points="522,148 520,167 470,343 453,542 439,672"/><polyline points="931,368 924,446 912,542 900,672"/><polyline points="1028,-13 1019,155 1007,316 997,381"/><polyline points="1037,404 1031,446 1022,672"/><polyline points="1152,-13 1146,155 1140,413 1131,542 1122,672"/><polyline points="291,-72 285,130 280,205 271,257"/>
+                </g>
+                <g stroke="var(--road-edge)" stroke-width="27">
+                  <polyline points="408,-13 405,74 403,152 389,271 344,499 319,597 310,672"/><polyline points="116,93 297,130 403,152 663,200 845,231 1028,265 1271,310"/><polyline points="423,287 602,313 845,352 1028,384 1271,434"/><polyline points="-6,342 298,391 541,429 651,447 845,481 1028,517 1271,573"/><polyline points="-6,465 298,513 481,542 639,576 845,617 1028,659"/><polyline points="381,271 271,257 78,228 -154,217"/>
+                </g>
+                <g stroke="var(--road)" stroke-width="19">
+                  <polyline points="408,-13 405,74 403,152 389,271 344,499 319,597 310,672"/><polyline points="116,93 297,130 403,152 663,200 845,231 1028,265 1271,310"/><polyline points="423,287 602,313 845,352 1028,384 1271,434"/><polyline points="-6,342 298,391 541,429 651,447 845,481 1028,517 1271,573"/><polyline points="-6,465 298,513 481,542 639,576 845,617 1028,659"/><polyline points="381,271 271,257 78,228 -154,217"/>
+                </g>
+                <polyline points="891,-13 873,155 858,316 839,446 821,575 809,672" stroke="var(--road-edge)" stroke-width="37"/>
+                <polyline points="891,-13 873,155 858,316 839,446 821,575 809,672" stroke="var(--road)" stroke-width="29"/>
+                <polyline points="891,-13 873,155 858,316 839,446 821,575 809,672" stroke="var(--road-edge)" stroke-width="2" stroke-dasharray="14 12"/>
+              </g>
+              <rect x="345" y="238" width="86" height="68" rx="16" fill="var(--park)" stroke="var(--park-edge)" stroke-width="3"/>
+              <text class="street" x="1105" y="276" transform="rotate(10.5 1105 276)" text-anchor="middle">C. Cuevas</text>
+              <text class="street" x="735" y="334" transform="rotate(9 735 334)" text-anchor="middle">Germán Riesco</text>
+              <text class="street" x="1000" y="386" transform="rotate(10 1000 386)" text-anchor="middle">Membrillar</text>
+              <text class="street" x="965" y="510" transform="rotate(11 965 510)" text-anchor="middle">O’Carrol</text>
+              <text class="street" x="610" y="575" transform="rotate(12 610 575)" text-anchor="middle">Gamero</text>
+              <text class="street" x="365" y="412" transform="rotate(-79 365 412)" text-anchor="middle">Estado</text>
+              <text class="street" x="155" y="246" transform="rotate(8.5 155 246)" text-anchor="middle">Independencia</text>
+              <text class="street" x="630" y="238" transform="rotate(-82 630 238)" text-anchor="middle">Almarza</text>
+              <text class="street" x="698" y="585" transform="rotate(-83 698 585)" text-anchor="middle">Zañartu</text>
+              <text class="street" x="866" y="245" transform="rotate(-84 866 245)" text-anchor="middle">Av. Freire</text>
+              <text class="street" x="461" y="455" transform="rotate(-85 461 455)" text-anchor="middle">Alcázar</text>
+              <text class="ringlbl" x="392" y="566">5 min</text>
+              <text class="ringlbl" x="96" y="440">10 min</text>
+              <g id="pins"></g>
+              <g aria-label="Edificio Héroes">
+                <circle cx="651" cy="449" r="24" fill="#1E2A2B" stroke="var(--pin-ring)" stroke-width="4"/>
+                <path d="M640 451 L651 441 L662 451 M643 449 V459 H659 V449" fill="none" stroke="#F5EFE4" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="580" y="480" width="142" height="30" rx="15" fill="#1E2A2B"/>
+                <text x="651" y="501" text-anchor="middle" style="font:700 17px var(--f-body);fill:#F5EFE4">Edificio Héroes</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="map-note">
+          <span><span class="es">Anillos: 5 y 10 minutos a pie. Tiempos aproximados.</span><span class="en">Rings: 5 and 10-minute walk. Times are approximate.</span></span>
+          <span class="swipe"><span class="es">Desliza el mapa →</span><span class="en">Swipe the map →</span></span>
+          <a href="https://www.google.com/maps/search/?api=1&query=Edificio+H%C3%A9roes+O%27Carrol+144+Rancagua&query_place_id=ChIJNc2hempDY5YR9xpQ8xrs2MY" target="_blank" rel="noopener"><span class="es">Cómo llegar al edificio</span><span class="en">Directions to the building</span></a>
+        </div>
+      </div>
+
+      <div class="chips" id="chips" role="group" aria-label="Filtrar por categoría"></div>
+      <div class="cats" id="cats"></div>
+
+      <div class="tips">
+        <div><b><span class="es">Bancos</span><span class="en">Banks</span></b><span class="es">Lunes a viernes desde las 9:00</span><span class="en">Mon–Fri from 9 AM</span></div>
+        <div><b><span class="es">Museo</span><span class="en">Museum</span></b><span class="es">Abre de martes a sábado</span><span class="en">Open Tuesday to Saturday</span></div>
+        <div><b>Unimarc</b><span class="es">Abre todos los días</span><span class="en">Open every day</span></div>
+        <div><b><span class="es">A pie</span><span class="en">On foot</span></b><span class="es">Todo a menos de 12 minutos</span><span class="en">Everything within 12 minutes</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="closing">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--hero-accent)"><span class="es">Reserva tu estadía</span><span class="en">Book your stay</span></p>
+    <h2><span class="es">Te esperamos en el <i>centro</i> de Rancagua</span><span class="en">See you in <i>downtown</i> Rancagua</span></h2>
+    <p><span class="es">Busca en Airbnb «Dpto. 2 Hab Céntrico | Estacionamiento | Wifi» o entra directo con el botón.</span><span class="en">Search Airbnb for “Dpto. 2 Hab Céntrico | Estacionamiento | Wifi” or use the button.</span></p>
+    <div class="cta-row"><a class="btn btn-primary" href="https://www.airbnb.cl/rooms/1627878755007060518" target="_blank" rel="noopener"><span class="es">Reservar en Airbnb</span><span class="en">Book on Airbnb</span> →</a></div>
+    <div class="host"><span><span class="es">Anfitrión:</span><span class="en">Host:</span> <b>Leonardo</b></span><span>Superhost</span><span><span class="es">Responde en menos de 1 hora</span><span class="en">Replies within an hour</span></span></div>
+  </div>
+</section>
+<div class="wrap foot"><span class="es">Edificio Héroes · O’Carrol 144, Rancagua, Chile. Ubicaciones y horarios según Google Maps; confírmalos antes de ir.</span><span class="en">Edificio Héroes · O’Carrol 144, Rancagua, Chile. Locations and hours from Google Maps; please confirm before you go.</span></div>
+
+<div class="bookbar">
+  <div class="in">
+    <div class="t"><b>Edificio Héroes</b><span class="es">★ 4,92 · Centro de Rancagua</span><span class="en">★ 4.92 · Downtown Rancagua</span></div>
+    <a class="btn btn-primary" href="https://www.airbnb.cl/rooms/1627878755007060518" target="_blank" rel="noopener"><span class="es">Reservar</span><span class="en">Book</span></a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var ICON={
+    comer:'<path d="M7 3 V21 M4.5 3 V8 Q4.5 10.5 7 10.5 Q9.5 10.5 9.5 8 V3 M17 21 V3 Q20 5 20 10 Q20 13 17 13"/>',
+    bares:'<path d="M4 4 H20 L12 13 Z"/><path d="M12 13 V20 M8 20 H16"/>',
+    cafes:'<path d="M4 9 H16 V14 A5 5 0 0 1 11 19 H9 A5 5 0 0 1 4 14 Z"/><path d="M16 10.5 H18 A2.5 2.5 0 0 1 18 15.5 H16"/><path d="M8 3 Q9 4.5 8 6 M12 3 Q13 4.5 12 6"/>',
+    cultura:'<path d="M12 2 V7 M10 4 H14"/><path d="M5 21 V12 L12 7 L19 12 V21 Z"/><path d="M10 21 V16 A2 2 0 0 1 14 16 V21"/>',
+    compras:'<path d="M5 8 H19 L18 21 H6 Z"/><path d="M9 10 V6 A3 3 0 0 1 15 6 V10"/>',
+    basicos:'<path d="M3 9 L12 4 L21 9 Z"/><path d="M5.5 9 V18 M10 9 V18 M14 9 V18 M18.5 9 V18"/><path d="M3 20 H21"/>',
+    estudios:'<path d="M2 9 L12 4 L22 9 L12 14 Z"/><path d="M6 11 V16 Q12 19.5 18 16 V11"/><path d="M22 9 V14"/>'
+  };
+  var CATS=[
+    {id:'comer',k:1,es:'Dónde comer',en:'Where to eat'},
+    {id:'bares',k:2,es:'Bares y noche',en:'Bars & nightlife'},
+    {id:'cafes',k:3,es:'Cafeterías',en:'Cafés'},
+    {id:'cultura',k:4,es:'Historia y cultura',en:'History & culture'},
+    {id:'compras',k:5,es:'Compras y cine',en:'Shopping & movies'},
+    {id:'basicos',k:6,es:'Bancos y básicos',en:'Banks & essentials'},
+    {id:'estudios',k:7,es:'Institutos',en:'Colleges'}
+  ];
+  var P=[
+    [1,'comer',"Papa John’s",'Pizzas con opciones veganas, abierto hasta tarde.','Pizza with vegan options, open late.',4,320,"O’Carrol 11",'ChIJ2ZxcekFDY5YR5kLfMJ_L0x4',894,444],
+    [2,'comer','Subway','Sándwiches rápidos en Portal El Tenis.','Quick sandwiches at Portal El Tenis.',4,300,"O’Carrol 011",'ChIJXUiemThDY5YREvqBdWNqK5A',850,456],
+    [3,'comer','Sushi Mi Rolls','Rolls frescos y abundantes; pedidos por WhatsApp.','Fresh, generous rolls; order on WhatsApp.',1,90,'Zañartu 88','ChIJZ9mZCEFDY5YRDm72UcMsia8',717,455],
+    [4,'comer','La Pamplona','Hamburguesas, sándwiches y cerveza; cierra domingos.','Burgers, sandwiches and beer; closed Sundays.',1,110,'Almarza 495','ChIJwTsoUUBDY5YRjmUc3G2GX48',595,393],
+    [5,'comer','Reina Victoria','Fuente de soda clásica: sándwiches, tortas y helados.','Classic soda fountain: sandwiches, cakes and ice cream.',11,860,'P.º Independencia 667','ChIJ3bj-jxVDY5YR-v3tdTnamuM',97,187],
+    [6,'bares','B – Restobar Lounge','Cocina, sushi gourmet y ambiente tranquilo con DJ.','Kitchen, gourmet sushi and a relaxed vibe with a DJ.',4,290,'Alcázar 445','ChIJ-zVua0BDY5YRICT6lIIe7xQ',471,342],
+    [7,'bares','Pub Malabar','Pub para la noche, abierto hasta tarde los fines de semana.','Pub for a night out, open late on weekends.',8,680,'Membrillar 256',null,1133,409],
+    [8,'bares',"Gamero’s Bar",'Cervezas, picoteo y, algunas noches, música en vivo.','Beers, bar snacks and live music some nights.',2,180,'Gamero 221','ChIJLwocbABDY5YRfBFx-YKXFSo',547,519],
+    [9,'cafes','Café Campos','Café ejecutivo con almuerzos; ideal para reuniones.','Business café with lunch; good for meetings.',8,620,'Campos 350',null,282,204],
+    [10,'cafes','Starbucks','Junto a Open Plaza; abre todos los días.','Next to Open Plaza; open every day.',8,620,'C. Cuevas 405','ChIJv2UzmZVDY5YRlCAQQ2kO7Fg',375,110],
+    [11,'cafes','Filippo','Café, pastelería y helados junto a la plaza.','Coffee, pastries and ice cream by the main square.',5,410,'Germán Riesco 381','ChIJJf8pCEFDY5YRTHazfd2hswQ',437,253],
+    [12,'cultura','Plaza de los Héroes','Corazón histórico de la ciudad (Batalla de Rancagua, 1814).','The historic heart of the city (Battle of Rancagua, 1814).',6,440,'Estado 498','ChIJPasE-T9DY5YRTmgm-fhFn_s',389,272],
+    [13,'cultura','Catedral de Rancagua','Templo histórico frente a la plaza; consulta horarios.','Historic church on the square; check opening hours.',5,410,'P.º Independencia 45','ChIJS7fyCkBDY5YRknfPiHNzIFE',387,318],
+    [14,'cultura','Museo Regional','Casas patrimoniales con la historia de la región; mar–sáb.','Heritage houses with the region’s history; Tue–Sat.',6,510,'Estado 685','ChIJ_d7NXT9DY5YRuY_3H9HhkvU',319,598],
+    [15,'compras','Open Plaza','Tiendas, supermercado y patio de comidas.','Stores, supermarket and food court.',8,630,'Estado 235','ChIJ1wnvSxVDY5YRtRbeeZ-865Q',407,72],
+    [16,'compras','Cinemark','Cine con estrenos, todos los días.','Cinema with new releases, every day.',8,660,'C. Cuevas 405','ChIJNYp84UJDY5YRGvNCyVj0_pg',362,66],
+    [17,'compras','Mall Patio','Tiendas, supermercado y casa de cambio.','Stores, supermarket and currency exchange.',8,660,'C. Cuevas 483','ChIJcfvPMxVDY5YR8PcwhzQQVZA',313,116],
+    [18,'basicos','Unimarc','Supermercado, abierto todos los días.','Supermarket, open every day.',4,340,'Membrillar 10','ChIJca2UtD9DY5YR5O_KhTOjWtc',892,398],
+    [19,'basicos','Banco de Chile','Sucursal y cajeros automáticos.','Branch and ATMs.',7,600,'P.º Independencia 500','ChIJGWx9KRNDY5YRC7Q5Tkzfec0',275,261],
+    [20,'basicos','Banco Santander','Sucursal y cajeros automáticos.','Branch and ATMs.',8,640,'P.º Independencia 511','ChIJC4T96mpDY5YRRTCLn-Vdw58',242,229],
+    [21,'basicos','BancoEstado','Sucursal principal de la ciudad.','Main branch in the city.',11,860,'P.º Independencia 666','ChIJv4ZLhRVDY5YR76NcYJGgu-g',78,229],
+    [22,'estudios','AIEP','Instituto profesional, sede Rancagua.','Professional institute, Rancagua campus.',5,380,'C. Cuevas 70','ChIJobOPGEJDY5YRHZldL0cXQMU',811,229],
+    [23,'estudios','IPChile','Instituto profesional, sede Rancagua.','Professional institute, Rancagua campus.',5,410,'C. Cuevas 135','ChIJ15wl2EFDY5YRLDkW_vFOh0w',713,166],
+    [24,'estudios','Instituto IPG','Instituto profesional, sede Rancagua.','Professional institute, Rancagua campus.',5,410,'Bernardo Cuevas 241','ChIJqwK0gmpDY5YRfP7PDdsi250',580,168]
+  ];
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+  function catOf(id){for(var i=0;i<CATS.length;i++)if(CATS[i].id===id)return CATS[i]}
+  function gmaps(p){
+    var q=encodeURIComponent(p[2]+', '+p[7]+', Rancagua');
+    return 'https://www.google.com/maps/search/?api=1&query='+q+(p[8]?'&query_place_id='+p[8]:'');
+  }
+  var NS='http://www.w3.org/2000/svg', pins=document.getElementById('pins');
+  P.forEach(function(p){
+    var c=catOf(p[1]), g=document.createElementNS(NS,'g');
+    g.setAttribute('class','pin'); g.setAttribute('data-cat',p[1]); g.setAttribute('tabindex','0'); g.setAttribute('role','button');
+    g.setAttribute('aria-label',p[0]+'. '+p[2]);
+    g.innerHTML='<circle cx="'+p[9]+'" cy="'+p[10]+'" r="19" fill="var(--p'+c.k+')"/><text x="'+p[9]+'" y="'+(p[10]+1)+'">'+p[0]+'</text>';
+    function go(){var el=document.getElementById('lugar-'+p[0]); if(!el)return; setFilter('all'); el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'}); el.classList.add('flash'); setTimeout(function(){el.classList.remove('flash')},1600)}
+    g.addEventListener('click',go); g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+    pins.appendChild(g);
+  });
+  var cats=document.getElementById('cats'), html='';
+  CATS.forEach(function(c){
+    html+='<div class="cat" data-cat="'+c.id+'"><h3><span class="ic" style="background:var(--p'+c.k+')"><svg viewBox="0 0 24 24" fill="none" stroke="#FBF5EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+ICON[c.id]+'</svg></span><span style="color:var(--c'+c.k+')"><span class="es">'+c.es+'</span><span class="en">'+c.en+'</span></span></h3><div class="places">';
+    P.forEach(function(p){ if(p[1]!==c.id)return;
+      html+='<article class="place" id="lugar-'+p[0]+'"><span class="n" style="background:var(--p'+c.k+')">'+p[0]+'</span><div class="body"><h4>'+esc(p[2])+'</h4><p class="d"><span class="es">'+esc(p[3])+'</span><span class="en">'+esc(p[4])+'</span></p><p class="m"><b>'+p[5]+' min</b> · '+p[6]+' m · '+esc(p[7])+'</p><a class="gm" style="color:var(--c'+c.k+')" href="'+gmaps(p)+'" target="_blank" rel="noopener"><span class="es">Ver en Google Maps</span><span class="en">Open in Google Maps</span> ↗</a></div></article>';
+    });
+    html+='</div></div>';
+  });
+  cats.innerHTML=html;
+  var chips=document.getElementById('chips'), ch='<button type="button" class="chip" data-f="all" aria-pressed="true"><span class="es">Todos</span><span class="en">All</span></button>';
+  CATS.forEach(function(c){ch+='<button type="button" class="chip" data-f="'+c.id+'" aria-pressed="false"><span class="dot" style="background:var(--p'+c.k+')"></span><span class="es">'+c.es+'</span><span class="en">'+c.en+'</span></button>'});
+  chips.innerHTML=ch;
+  function setFilter(f){
+    chips.querySelectorAll('.chip').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-f')===f))});
+    cats.querySelectorAll('.cat').forEach(function(el){el.hidden=!(f==='all'||el.getAttribute('data-cat')===f)});
+    pins.querySelectorAll('.pin').forEach(function(el){el.classList.toggle('dim',!(f==='all'||el.getAttribute('data-cat')===f))});
+  }
+  chips.addEventListener('click',function(e){var b=e.target.closest('.chip'); if(b)setFilter(b.getAttribute('data-f'))});
+
+  var root=document.documentElement, bEs=document.getElementById('lang-es'), bEn=document.getElementById('lang-en');
+  function setLang(l){root.lang=l; bEs.setAttribute('aria-pressed',String(l==='es')); bEn.setAttribute('aria-pressed',String(l==='en')); try{localStorage.setItem('heroes-lang',l)}catch(e){}}
+  bEs.addEventListener('click',function(){setLang('es')}); bEn.addEventListener('click',function(){setLang('en')});
+  var saved=null; try{saved=localStorage.getItem('heroes-lang')}catch(e){}
+  if(saved!=='es'&&saved!=='en'){var nl=(navigator.language||'es').toLowerCase(); saved=nl.indexOf('es')===0?'es':(nl?'en':'es')}
+  setLang(saved);
+})();
+</script>
+</body>
+</html>
