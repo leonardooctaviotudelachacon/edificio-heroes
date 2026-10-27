@@ -21,7 +21,6 @@ html{color-scheme:light;padding-top:env(safe-area-inset-top,0px)}
 body{margin:0}
 img{max-width:100%}
 [hidden]{display:none!important}
-<style>
 /* Layout: dark photo hero, then one reading column of paper sections; the neighborhood map is the centerpiece, with a filterable list of 24 places under it. */
 :root{
   --bg:#F5EFE4; --surface:#FBF7EF; --surface-2:#EBE2D2; --fg:#1E2A2B; --muted:#55605E; --line:#DCCFB9;
@@ -74,11 +73,32 @@ p{margin:0}
 .lang button[aria-pressed="true"]{background:var(--hero-fg);color:var(--hero-bg)}
 
 /* hero */
-.hero{background:var(--hero-bg);color:var(--hero-fg)}
-.hero-grid{display:grid;grid-template-columns:1fr;gap:0}
-.hero-photo{position:relative;height:340px;overflow:hidden}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
-.hero-text{padding-block:32px 40px;display:flex;flex-direction:column;gap:18px;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.hero{position:relative;background:var(--hero-bg);color:var(--hero-fg);overflow:hidden}
+.slides{display:flex;height:clamp(520px,82vh,760px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;scroll-behavior:smooth}
+.slides::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;margin:0;position:relative}
+.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slide figcaption{position:absolute;top:16px;left:var(--gutter-l);font-size:13px;font-weight:600;letter-spacing:.04em;background:rgba(13,20,21,.6);color:#F5EFE4;padding:5px 12px;border-radius:999px}
+@media (min-width:900px){.slide{flex-basis:50%}}
+.hero-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(13,20,21,.94) 0%,rgba(13,20,21,.72) 30%,rgba(13,20,21,.15) 62%,rgba(13,20,21,0) 80%)}
+.hero-text{position:absolute;left:0;right:0;bottom:0;pointer-events:none;padding-block:0 64px;display:flex;flex-direction:column;gap:16px;padding-left:var(--gutter-l);padding-right:var(--gutter-r);max-width:760px}
+.hero-text a,.hero-text button{pointer-events:auto}
+.gal-nav{position:absolute;top:42%;width:46px;height:46px;border-radius:50%;border:0;background:rgba(245,239,228,.92);color:#1E2A2B;display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.gal-nav svg{width:20px;height:20px}
+.gal-nav.prev{left:max(14px, env(safe-area-inset-left,0px))}
+.gal-nav.next{right:max(14px, env(safe-area-inset-right,0px))}
+.gal-nav[disabled]{opacity:.35;cursor:default}
+.gal-count{position:absolute;top:16px;right:max(16px, env(safe-area-inset-right,0px));font:600 13px var(--f-body);background:rgba(13,20,21,.6);color:#F5EFE4;padding:5px 12px;border-radius:999px;font-variant-numeric:tabular-nums}
+.dots{position:absolute;bottom:24px;right:max(16px, env(safe-area-inset-right,0px));display:flex;gap:8px}
+.dots button{width:9px;height:9px;padding:0;border-radius:50%;border:0;background:rgba(245,239,228,.45);cursor:pointer}
+.dots button[aria-current="true"]{background:#F5EFE4;width:24px;border-radius:999px}
+@media (min-width:900px){.hero-text{padding-left:max(56px, env(safe-area-inset-left,0px));padding-block:0 72px}.gal-nav{top:44%}}
+.highlights{background:var(--surface);border-bottom:1px solid var(--line)}
+.highlights .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;padding-block:0;background:var(--line)}
+@media (min-width:860px){.highlights .wrap{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.hl{background:var(--surface);padding:18px 16px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.hl b{font-family:var(--f-display);font-weight:500;font-size:24px;line-height:1.15;color:var(--accent)}
+.hl span{font-size:14px;color:var(--muted)}
 .hero-text .eyebrow{color:var(--hero-accent)}
 .hero h1{font-size:clamp(40px,9vw,76px);line-height:1.02;letter-spacing:-0.02em}
 .hero h1 i{color:var(--hero-accent)}
@@ -92,11 +112,6 @@ p{margin:0}
 .btn-primary:hover{background:#A9441F}
 .btn-ghost{border-color:var(--hero-line);color:var(--hero-fg)}
 .btn-ghost:hover{border-color:var(--hero-muted)}
-@media (min-width:900px){
-  .hero-grid{grid-template-columns:1.05fr .95fr;min-height:620px}
-  .hero-photo{height:auto;order:2}
-  .hero-text{justify-content:center;padding-block:72px;padding-left:max(48px, env(safe-area-inset-left,0px));padding-right:48px}
-}
 
 /* sections */
 section.block{padding-block:56px}
@@ -218,9 +233,19 @@ section.block + section.block{border-top:1px solid var(--line)}
   </div>
 </header>
 
-<section class="hero">
-  <div class="hero-grid">
-    <div class="hero-photo"><img src="images/living.jpg" alt="Living-comedor del departamento con vista a la cordillera" width="825" height="1100"></div>
+<section class="hero" aria-label="Fotos y presentación del departamento">
+  <div class="slides" id="slides" tabindex="0" aria-label="Galería de fotos: desliza para ver más">
+    <figure class="slide"><img src="images/living.jpg" alt="Living-comedor con vista a la cordillera" width="825" height="1100" style="object-position:50% 40%"><figcaption><span class="es">Living-comedor</span><span class="en">Living room</span></figcaption></figure>
+    <figure class="slide"><img src="images/cocina.jpg" alt="Cocina equipada con mesa de desayuno y refrigerador" width="825" height="1100" loading="lazy" style="object-position:50% 45%"><figcaption><span class="es">Cocina equipada</span><span class="en">Equipped kitchen</span></figcaption></figure>
+    <figure class="slide"><img src="images/dormitorio.jpg" alt="Dormitorio principal con cama queen y ventanal con vista a la ciudad" width="825" height="1100" loading="lazy" style="object-position:50% 55%"><figcaption><span class="es">Dormitorio principal</span><span class="en">Main bedroom</span></figcaption></figure>
+    <figure class="slide"><img src="images/bano.jpg" alt="Baño completo con ducha de vidrio y vanitorio" width="825" height="1100" loading="lazy" style="object-position:50% 45%"><figcaption><span class="es">Baño completo</span><span class="en">Full bathroom</span></figcaption></figure>
+  </div>
+  <div class="hero-shade"></div>
+  <span class="gal-count" id="galCount" aria-live="polite">1 / 4</span>
+  <button type="button" class="gal-nav prev" id="galPrev" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button type="button" class="gal-nav next" id="galNext" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  <div class="dots" id="galDots" role="group" aria-label="Fotos"></div>
+  <div>
     <div class="hero-text">
       <p class="eyebrow">O’Carrol 144 · Rancagua centro</p>
       <h1><span class="es">Tu base en el <i>corazón</i> de Rancagua</span><span class="en">Your home base in the <i>heart</i> of Rancagua</span></h1>
@@ -235,6 +260,15 @@ section.block + section.block{border-top:1px solid var(--line)}
         <a class="btn btn-ghost" href="#guia"><span class="es">Ver guía del barrio</span><span class="en">Neighborhood guide</span></a>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="highlights" aria-label="Lo más destacado">
+  <div class="wrap">
+    <div class="hl"><b>★ 4,92</b><span class="es">24 reseñas · Superhost</span><span class="en">24 reviews · Superhost</span></div>
+    <div class="hl"><b class="es">Estacionamiento</b><b class="en">Free parking</b><span class="es">Privado y sin costo</span><span class="en">Private, in the building</span></div>
+    <div class="hl"><b>6 min</b><span class="es">a pie de la Plaza de los Héroes</span><span class="en">walk to the main square</span></div>
+    <div class="hl"><b>5,0</b><span class="es">en limpieza y ubicación</span><span class="en">for cleanliness and location</span></div>
   </div>
 </section>
 
@@ -476,6 +510,30 @@ section.block + section.block{border-top:1px solid var(--line)}
   var saved=null; try{saved=localStorage.getItem('heroes-lang')}catch(e){}
   if(saved!=='es'&&saved!=='en'){var nl=(navigator.language||'es').toLowerCase(); saved=nl.indexOf('es')===0?'es':(nl?'en':'es')}
   setLang(saved);
+
+  // photo carousel: native swipe via scroll-snap, plus arrows, dots and keys
+  var track=document.getElementById('slides'), slides=track.querySelectorAll('.slide'),
+      prev=document.getElementById('galPrev'), next=document.getElementById('galNext'),
+      dots=document.getElementById('galDots'), count=document.getElementById('galCount'), n=slides.length;
+  for(var i=0;i<n;i++){var d=document.createElement('button');d.type='button';d.setAttribute('aria-label','Foto '+(i+1));(function(k){d.addEventListener('click',function(){goTo(k)})})(i);dots.appendChild(d)}
+  function perView(){return Math.max(1,Math.round(track.clientWidth/slides[0].clientWidth))}
+  function current(){return Math.round(track.scrollLeft/slides[0].clientWidth)}
+  function goTo(k){var max=n-perView();k=Math.max(0,Math.min(k,max));track.scrollTo({left:k*slides[0].clientWidth})}
+  function update(){
+    var c=current(), pv=perView(), max=n-pv;
+    prev.disabled=c<=0; next.disabled=c>=max;
+    prev.hidden=next.hidden=(max<=0);
+    dots.hidden=(max<=0);
+    dots.querySelectorAll('button').forEach(function(b,j){b.hidden=j>max; b.setAttribute('aria-current',String(j===c))});
+    count.textContent=(pv>1?(c+1)+'–'+Math.min(n,c+pv):(c+1))+' / '+n;
+  }
+  prev.addEventListener('click',function(){goTo(current()-1)});
+  next.addEventListener('click',function(){goTo(current()+1)});
+  track.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();goTo(current()+1)} if(e.key==='ArrowLeft'){e.preventDefault();goTo(current()-1)}});
+  var t; track.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(update,60)},{passive:true});
+  window.addEventListener('resize',update);
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)track.style.scrollBehavior='auto';
+  update();
 })();
 </script>
 </body>
