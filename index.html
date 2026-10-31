@@ -256,13 +256,17 @@ section.block + section.block{border-top:1px solid var(--line)}
 
 <section class="hero" aria-label="Fotos y presentación del departamento">
   <div class="slides" id="slides" tabindex="0" aria-label="Galería de fotos: desliza para ver más">
-    <figure class="slide"><img src="images/living.jpg" alt="Living-comedor con vista a la cordillera" width="825" height="1100" style="object-position:50% 40%"><figcaption><span class="es">Living-comedor</span><span class="en">Living room</span></figcaption></figure>
-    <figure class="slide"><img src="images/cocina.jpg" alt="Cocina equipada con mesa de desayuno y refrigerador" width="825" height="1100" loading="lazy" style="object-position:50% 45%"><figcaption><span class="es">Cocina equipada</span><span class="en">Equipped kitchen</span></figcaption></figure>
-    <figure class="slide"><img src="images/dormitorio.jpg" alt="Dormitorio principal con cama queen y ventanal con vista a la ciudad" width="825" height="1100" loading="lazy" style="object-position:50% 55%"><figcaption><span class="es">Dormitorio principal</span><span class="en">Main bedroom</span></figcaption></figure>
-    <figure class="slide"><img src="images/bano.jpg" alt="Baño completo con ducha de vidrio y vanitorio" width="825" height="1100" loading="lazy" style="object-position:50% 45%"><figcaption><span class="es">Baño completo</span><span class="en">Full bathroom</span></figcaption></figure>
+    <figure class="slide"><img src="images/fotos/01-espacio-abierto.jpg" alt="Living, comedor y cocina integrados con salida al balcón" width="1400" height="788"><figcaption><span class="es">Espacio integrado</span><span class="en">Open-plan living</span></figcaption></figure>
+    <figure class="slide"><img src="images/fotos/02-living.jpg" alt="Living con sofá y comedor frente al ventanal" width="1400" height="788" loading="lazy"><figcaption><span class="es">Living-comedor</span><span class="en">Living room</span></figcaption></figure>
+    <figure class="slide"><img src="images/fotos/03-cocina.jpg" alt="Cocina equipada con barra, horno y refrigerador" width="1400" height="788" loading="lazy"><figcaption><span class="es">Cocina equipada</span><span class="en">Equipped kitchen</span></figcaption></figure>
+    <figure class="slide"><img src="images/fotos/04b-dormitorio-cama.jpg" alt="Dormitorio principal con cama queen, cubrecama blanco, cojines grises y ventanal con vista a la ciudad" width="1400" height="788" loading="lazy"><figcaption><span class="es">Dormitorio principal</span><span class="en">Main bedroom</span></figcaption></figure>
+    <figure class="slide"><img src="images/fotos/06-dormitorio-camarote.jpg" alt="Segundo dormitorio con camarote" width="1400" height="788" loading="lazy"><figcaption><span class="es">Segundo dormitorio</span><span class="en">Second bedroom</span></figcaption></figure>
+    <figure class="slide"><img src="images/fotos/07-bano-ducha.jpg" alt="Baño completo con ducha de vidrio" width="1400" height="788" loading="lazy"><figcaption><span class="es">Baño con ducha</span><span class="en">Bathroom with shower</span></figcaption></figure>
+    <figure class="slide"><img src="images/fotos/08-bano-tina.jpg" alt="Segundo baño completo con tina" width="1400" height="788" loading="lazy"><figcaption><span class="es">Baño con tina</span><span class="en">Bathroom with tub</span></figcaption></figure>
+    <figure class="slide"><img src="images/fotos/10-balcon.jpg" alt="Balcón con sillones y vista a la ciudad" width="1400" height="788" loading="lazy"><figcaption><span class="es">Balcón</span><span class="en">Balcony</span></figcaption></figure>
   </div>
   <div class="hero-shade"></div>
-  <span class="gal-count" id="galCount" aria-live="polite">1 / 4</span>
+  <span class="gal-count" id="galCount" aria-live="polite">1 / 8</span>
   <button type="button" class="gal-nav prev" id="galPrev" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
   <button type="button" class="gal-nav next" id="galNext" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
   <div class="dots" id="galDots" role="group" aria-label="Fotos"></div>
@@ -507,7 +511,7 @@ section.block + section.block{border-top:1px solid var(--line)}
     [21,'basicos','BancoEstado','Sucursal principal de la ciudad.','Main branch in the city.',11,860,'P.º Independencia 666','ChIJv4ZLhRVDY5YR76NcYJGgu-g',78,229],
     [22,'estudios','AIEP','Instituto profesional, sede Rancagua.','Professional institute, Rancagua campus.',5,380,'C. Cuevas 70','ChIJobOPGEJDY5YRHZldL0cXQMU',811,229],
     [23,'estudios','IPChile','Instituto profesional, sede Rancagua.','Professional institute, Rancagua campus.',5,410,'C. Cuevas 135','ChIJ15wl2EFDY5YRLDkW_vFOh0w',713,166],
-    [24,'estudios','Instituto IPG','Instituto profesional, sede Rancagua.','Professional institute, Rancagua campus.',5,410,'Bernardo Cuevas 241','ChIJqwK0gmpDY5YRfP7PDdsi250',580,168]
+    [24,'estudios','Instituto Santo Tomás','Sede Rancagua, en la misma calle del edificio.','Rancagua campus, on the same street as the building.',2,160,'O’Carrol 63','ChIJsXhoC0FDY5YR7qa8s89w6AQ',760,422]
   ];
   function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
   function catOf(id){for(var i=0;i<CATS.length;i++)if(CATS[i].id===id)return CATS[i]}
